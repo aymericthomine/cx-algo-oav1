@@ -1,19 +1,15 @@
-function howManyCamelCase(str = '') {
-    let sentence = ''
+function howManyCamelCase(str) {
     let count = 0
   
-    if (str.charCodeAt(0) >= 97 && str.charCodeAt(0) <= 122) {
-        count++;
+    for (let i = 0; i < str.length; i++) {
+      const code = str.charCodeAt(i)
+  
+      if (code >= 65 && code <= 90) {
+        count++
+      }
     }
-
-    for (let i = 0; i < str.length; i++) {         
-        if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
-            count++;
-        } 
-    }  
-
+  
     return count
-
-}
-
-console.log(howManyCamelCase('iLoveTennis'))
+  }
+  
+  console.log('nWord:', howManyCamelCase("iLoveTennis"))
