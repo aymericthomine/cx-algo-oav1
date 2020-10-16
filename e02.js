@@ -1,25 +1,39 @@
-function IsAPangrams(str = '') {
-    let sentence = ''
-    let letters = 'abcdefghijklmnopqrstuvwxyz'
-  
-    for(let i = 0; i < str.length; i++) {
-      const code = str.charCodeAt(i)
+function isAPangram1(str) {
+  for (let i = 65; i <= 90; i++) {
+    let letter = String.fromCharCode(i);
 
-      if (code >= 65 && code <= 90) {
-          sentence += String.fromCharCode(code + 32)
-      } else {
-          sentence += String.fromCharCode(code)
-      }
+    if (!str.toUpperCase().includes(letter)) {
+      return false
     }
-  
-    for (var i = 0; i < 26; i++) {
-        if (sentence.indexOf(letters[i]) < 0) {
-            return false
-        }
-    }
+  }
 
-    return true
+  return true
 }
 
-console.log(IsAPangrams('The quick brown fox jumps over the lazy dog'))
-console.log(IsAPangrams('Hello Efrei'))
+function isAPangram2(str) {
+  const alphabets = 'abcdefghijklmnopqrstuvwxyz'
+  
+  for (let char of alphabets) {
+    if (!str.toLowerCase().includes(char)) {
+      return false
+    }
+  }
+  
+  return true
+}
+
+function isAPangram3(str) {
+  let tab = str.toLowerCase().replace(/ /g, "");
+  let set = new Set(tab);
+  return (set.size == 26 ? true : false);
+}
+
+console.log(isAPangram1('THE QUICK brown fox jumps over the lazy dog'))
+console.log(isAPangram1('Hello Efrei'))
+
+console.log(isAPangram2('THE QUICK brown fox jumps over the lazy dog'))
+console.log(isAPangram2('Hello Efrei'))
+
+console.log(isAPangram3('THE QUICK brown fox jumps over the lazy dog'))
+console.log(isAPangram3('Hello Efrei'))
+
